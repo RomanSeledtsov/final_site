@@ -1,0 +1,33 @@
+{% load static %}
+
+{% include '../header.html' %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<h1 class="h1_name">Название - {{ inv_id.name }}</h1>
+<img src="{{ inv_id.image.url }}" width="280" height="350">
+<p>Вид спорта - {{ inv_id.SPORT }}</p>
+<p>О товаре - {{ inv_id.about_inv }}</p>
+<p>Почта - {{ inv_id.email }}</p>
+<data>Дата создания поста - {{ inv_id.created_at }}</data>
+
+<ul>
+    {% for i in inv_id.reviews_inv.all %}
+    <li>
+        <h1>{{ i.stars }}</h1>
+        <p>{{ i.text }}</p>
+        <p>{{ i.created_at }}</p>
+    </li>
+    {% endfor %}
+</ul>
+
+<h2>Оставить отзыв</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Отзыв</button>
+</form>
+
+{% include '../footer.html' %}
+
+
+
+

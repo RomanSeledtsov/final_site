@@ -1,0 +1,18 @@
+{% load static %}
+{% include '../header.html' %}
+<link rel="stylesheet" href="{% static 'css/crud_book.css' %}">
+<h3>Добавьте товар 🚴</h3>
+<form action="/create_inv/" method="POST" enctype="multipart/form-data" class="decor">
+    <div class="form-left-decoration"></div>
+    <div class="form-right-decoration"></div>
+    <div class="circle"></div>
+    <div class="form-inner">
+    {% csrf_token %}
+    {{ form.as_p }}
+<input type="submit" value="Добавить">
+<input type="reset" value="Очистить">
+</div>
+</form>
+
+
+{% include '../footer.html' %}

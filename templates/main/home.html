@@ -1,0 +1,38 @@
+{% include 'header.html' %}
+
+<div class="slogan">
+    <h1>Слоганы</h1>
+    <ul>
+        {% for slogan in slogans %}
+            <li>{{ slogan.text }}</li>
+        {% endfor %}
+    </ul>
+</div>
+
+<div class="top-products">
+    <h1>Топ 5 продуктов</h1>
+    <ul>
+        {% for product in top_products %}
+            <li>
+                <h2>{{ product.name }}</h2>
+                <p>Описание товара: {{ product.description }}</p>
+                <p>Цена: {{ product.price }} руб.</p>
+                <img src="{{ product.image.url }}" alt="{{ product.name }}" width="280" height="350">
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+
+<div class="youtube-videos">
+    <h1>Видео с YouTube</h1>
+    <ul>
+        {% for v in youtube_videos %}
+        <iframe src="{{ v.video_id }}" frameborder="0"></iframe>
+        {% endfor %}
+    </ul>
+</div>
+
+{% include 'footer.html' %}
+
+
+
